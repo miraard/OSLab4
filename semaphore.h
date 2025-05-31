@@ -6,10 +6,13 @@
 
 // تعریف ساختار Semaphore
 struct semaphore {
-  int value;           // مقدار اولیه یا فعلی Semaphore
-  struct spinlock lock;   // قفل برای محافظت از دسترسی هم‌زمان
-  struct proc *queue[64]; // صف فرآیندهایی که منتظر Semaphore هستن
-  int head, tail;      // اندیس‌های ابتدا و انتهای صف
+    int value;
+    struct spinlock lock;
+    struct proc *queue[64];
+    int head;
+    int tail;
+    int count;
+    void *sleep_channel; // کانال جداگونه برای sleep/wakeup
 };
 
 // توابع Semaphore
