@@ -24,6 +24,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 
+
 // ulib.c
 int stat(const char*, struct stat*);
 char* strcpy(char*, const char*);
@@ -37,3 +38,21 @@ void* memset(void*, int, uint);
 void* malloc(uint);
 void free(void*);
 int atoi(const char*);
+
+
+// Placeholder for kernel structures
+struct spinlock;
+struct proc;
+
+// Semaphore structure for user space
+struct semaphore {
+  int value;           // مقدار اولیه یا فعلی Semaphore
+  struct spinlock *lock; // اشاره‌گر به قفل (placeholder)
+  struct proc *queue[64]; // صف فرآیندها (placeholder)
+  int head, tail;      // اندیس‌های ابتدا و انتهای صف
+};
+
+// Semaphore system calls
+int sem_init(struct semaphore *sem, int value);
+int sem_acquire(struct semaphore *sem);
+int sem_release(struct semaphore *sem);

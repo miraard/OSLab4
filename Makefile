@@ -10,6 +10,7 @@ OBJS = \
 	kbd.o\
 	lapic.o\
 	log.o\
+	semaphore.o\
 	main.o\
 	mp.o\
 	picirq.o\
@@ -27,6 +28,7 @@ OBJS = \
 	uart.o\
 	vectors.o\
 	vm.o\
+	
 
 # Cross-compiling (e.g., on Mac OS X)
 # TOOLPREFIX = i386-jos-elf
@@ -181,6 +183,8 @@ UPROGS=\
 	_usertests\
 	_wc\
 	_zombie\
+	_semtest\
+	_semtest2\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

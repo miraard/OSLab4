@@ -6,6 +6,7 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
+#include "semaphore.h"
 
 int
 sys_fork(void)
@@ -88,4 +89,36 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+
+
+int sys_sem_init(void)
+{
+  struct semaphore *sem;
+  int value;
+
+  if(argptr(0, (void*)&sem, sizeof(*sem)) < 0 || argint(1, &value) < 0)
+    return -1;
+  sem_init(sem, value);
+  return 0;
+}
+
+int sys_sem_acquire(void)
+{
+  struct semaphore *sem;
+
+  if(argptr(0, (void*)&sem, sizeof(*sem)) < 0)
+    return -1;
+  sem_acquire(sem);
+  return sem->value;
+}
+
+int sys_sem_release(void)
+{
+  struct semaphore *sem;
+
+  if(argptr(0, (void*)&sem, sizeof(*sem)) < 0)
+    return -1;
+  sem_release(sem);
+  return sem->value;
 }

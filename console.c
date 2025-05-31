@@ -11,7 +11,6 @@
 #include "fs.h"
 #include "file.h"
 #include "memlayout.h"
-#include "mmu.h"
 #include "proc.h"
 #include "x86.h"
 
@@ -296,4 +295,3 @@ consoleinit(void)
 
   ioapicenable(IRQ_KBD, 0);
 }
-
