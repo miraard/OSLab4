@@ -1,10 +1,9 @@
 #ifndef SEMAPHORE_H
 #define SEMAPHORE_H
 
+#include "types.h"
 #include "spinlock.h"
-#include "proc.h"
 
-// تعریف ساختار Semaphore
 struct semaphore {
     int value;
     struct spinlock lock;
@@ -12,12 +11,13 @@ struct semaphore {
     int head;
     int tail;
     int count;
-    void *sleep_channel; // کانال جداگونه برای sleep/wakeup
+    struct proc *waiters[64];
+    int waiter_count;
+    struct spinlock sleeplock;
 };
 
-// توابع Semaphore
-void sem_init(struct semaphore *sem, int value);
-void sem_acquire(struct semaphore *sem);
-void sem_release(struct semaphore *sem);
+int sem_init(int id, int value);
+int sem_acquire(int id);
+int sem_release(int id);
 
 #endif

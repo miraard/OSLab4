@@ -183,9 +183,6 @@ UPROGS=\
 	_usertests\
 	_wc\
 	_zombie\
-	_semtest\
-	_semtest2\
-	_semstress\
 	_semtest_zero\
 
 fs.img: mkfs README $(UPROGS)
