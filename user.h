@@ -23,6 +23,12 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int rw_init(void);
+int reader(void);
+int writer(void);
+int barber_init(void);  
+int barber(void);
+int customer(void);
 
 
 // ulib.c

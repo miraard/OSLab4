@@ -188,3 +188,10 @@ void            clearpteu(pde_t *pgdir, char *uva);
 
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
+
+int             rw_init(void); 
+int             reader(void);  
+int             writer(void);   
+int             barber_init(void);
+int             barber(void);
+int             customer(void);

@@ -28,6 +28,8 @@ OBJS = \
 	uart.o\
 	vectors.o\
 	vm.o\
+	reader_writer.o\
+	barber.o\
 	
 
 # Cross-compiling (e.g., on Mac OS X)
@@ -184,6 +186,8 @@ UPROGS=\
 	_wc\
 	_zombie\
 	_semtest_zero\
+	_rwtest\
+	_barbertest\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

@@ -23,3 +23,9 @@
 #define SYS_sem_init    22
 #define SYS_sem_acquire 23
 #define SYS_sem_release 24
+#define SYS_rw_init    25   
+#define SYS_reader     26
+#define SYS_writer     27
+#define SYS_barber_init 28 
+#define SYS_barber      29
+#define SYS_customer    30

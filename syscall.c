@@ -7,6 +7,11 @@
 #include "x86.h"
 #include "syscall.h"
 
+
+extern int rw_init(void);  // تغییر void به int
+extern int reader(void);   // تغییر void به int
+extern int writer(void);   // تغییر void به int
+
 // User code makes a system call with INT T_SYSCALL.
 // System call number in %eax.
 // Arguments on the stack, from the user call to the C
@@ -106,6 +111,12 @@ extern int sys_uptime(void);
 extern int sys_sem_init(void);
 extern int sys_sem_acquire(void);
 extern int sys_sem_release(void);
+extern int sys_rw_init(void); 
+extern int sys_reader(void);
+extern int sys_writer(void);
+extern int sys_barber_init(void);
+extern int sys_barber(void);
+extern int sys_customer(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -132,6 +143,12 @@ static int (*syscalls[])(void) = {
 [SYS_sem_init]    sys_sem_init,
 [SYS_sem_acquire] sys_sem_acquire,
 [SYS_sem_release] sys_sem_release,
+[SYS_rw_init]     sys_rw_init, 
+[SYS_reader]      sys_reader,
+[SYS_writer]      sys_writer,
+[SYS_barber_init] sys_barber_init, 
+[SYS_barber]      sys_barber,
+[SYS_customer]    sys_customer,
 };
 
 void

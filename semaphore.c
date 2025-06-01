@@ -127,4 +127,4 @@ cprintf("sem_release: value after = %d\n", sem->value);
 release(&sem->lock);
 cprintf("sem_release: lock released\n");
 return 0;
-}   
+}

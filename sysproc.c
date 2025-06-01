@@ -117,3 +117,44 @@ if (argint(0, &id) < 0)
 return -1;
 return sem_release(id);
 }
+
+
+// اضافه کردن سیستم‌کال‌های جدید برای Reader-Writer
+int
+sys_rw_init(void)
+{
+rw_init();
+return 0;
+}
+
+int
+sys_reader(void)
+{
+reader();
+return 0;
+}
+
+int
+sys_writer(void)
+{
+writer();
+return 0;
+}
+
+int
+sys_barber_init(void)
+{
+return barber_init();
+}
+
+int
+sys_barber(void)
+{
+return barber();
+}
+
+int
+sys_customer(void)
+{
+return customer();
+}
